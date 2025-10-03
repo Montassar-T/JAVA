@@ -21,6 +21,11 @@ public class Magasin {
     }
 
     public void ajouterProduit(Produit produit) {
+        if (chercherProduit(produit)) {
+            System.out.println("Ce produit existe déjà dans ce magasin !");
+            return;
+        }
+
         if (totalProduitsMagazin < capacite) {
             produits[totalProduitsMagazin++] = produit;
             totalProduits++;
@@ -40,6 +45,24 @@ public class Magasin {
         }
     }
 
+    public boolean chercherProduit(Produit produit) {
+        for (Produit p : produits) {
+            if (p != null && p.comparer(produit)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static Magasin comparerMagasins(Magasin m1, Magasin m2) {
+        if (m1.totalProduitsMagazin > m2.totalProduitsMagazin) {
+            return m1;
+        } else if (m2.totalProduitsMagazin > m1.totalProduitsMagazin) {
+            return m2;
+        } else {
+            return null;
+        }
+    }
 
     public int getId() {
         return id;

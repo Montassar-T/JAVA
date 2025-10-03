@@ -33,6 +33,18 @@ public class Produit {
         return "Produit: " + this.libelle + " marque: " +  this.marque + " prix: " + this.prix + " date d'expiration: " + this.dateExpiration;
     }
 
+    public boolean comparer(Produit autre) {
+        return this.id == autre.id &&
+                this.libelle.equals(autre.libelle) &&
+                this.prix == autre.prix;
+    }
+
+    public static boolean comparer(Produit p1, Produit p2) {
+        return p1.id == p2.id &&
+                p1.libelle.equals(p2.libelle) &&
+                p1.prix == p2.prix;
+    }
+
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

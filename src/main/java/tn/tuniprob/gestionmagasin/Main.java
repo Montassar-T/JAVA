@@ -53,6 +53,7 @@ public class Main {
        System.out.println(produit4.afficher());
 
        magasin1.ajouterProduit(produit1);
+       magasin1.ajouterProduit(produit1); // produit déja existe
        magasin1.ajouterProduit(produit2);
 
        magasin2.ajouterProduit(produit3);
@@ -60,5 +61,21 @@ public class Main {
 
        magasin1.afficherMagasin();
        magasin2.afficherMagasin();
+
+       System.out.println("Nombre total de produits (tous magasins) : " + Magasin.getTotalProductCount());
+
+       System.out.println("Produit1 == Produit2 ? " + produit1.comparer(produit2));
+       System.out.println("Produit2 == Produit3 ? " + Produit.comparer(produit2, produit3));
+
+       System.out.println("Produit3 est dans Magasin1 ? " + magasin1.chercherProduit(produit3));
+       System.out.println("Produit4 est dans Magasin2 ? " + magasin2.chercherProduit(produit4));
+
+       Magasin plusGrand = Magasin.comparerMagasins(magasin1, magasin2);
+       if (plusGrand != null) {
+          System.out.println("Le magasin avec le plus de produits est : " + plusGrand.getAddress());
+       } else {
+          System.out.println("Les deux magasins ont le même nombre de produits !");
+       }
+
     }
 }
